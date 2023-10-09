@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ba6j#oz_$%a9z@zsw*o6mn@a4i4!1si4=lh_o&47-!6)+zcmxa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'pythonanywhere.com', 'localhost']
 
 # Application definition
 
@@ -37,7 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'rest_framework',
+    'rest_framework.authtoken', #added
 ]
+
+#added
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.IsAdminUser',
+    ],
+    'PAGE_SIZE': 10
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -122,3 +133,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media/"
